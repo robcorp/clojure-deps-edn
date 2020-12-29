@@ -1,7 +1,7 @@
 ![Practicalli Clojure deps.edn user wide configuration for Clojure projects](https://raw.githubusercontent.com/practicalli/graphic-design/live/practicalli-clojure-deps.png)
 
 # User level configuration for Clojure CLI tools
-[practicalli/clojure-deps-edn](https://github.com/practicalli/clojure-deps-edn) provides a user level configuration, `~/.clojure/deps.edn`, containing over 30 aliases to support Clojure CLI and tools.deps project development.  These aliases use meaningful and descriptive names to avoid clashes with project specific aliases, ensuring that the user wide aliases remain available in all projects.
+[practicalli/clojure-deps-edn](https://github.com/practicalli/clojure-deps-edn) provides a user level configuration, containing over 30 aliases to support Clojure CLI and tools.deps project development.  These aliases use meaningful and descriptive names to avoid clashes with project specific aliases, ensuring that the user wide aliases remain available in all projects.
 
 Aliases with common options are provided for convenience and to minimize the amount of cognitive load required to remember how to use aliases. Initial inspiration taken from [seancorfield/dot-clojure](https://github.com/seancorfield/dot-clojure).
 
@@ -123,6 +123,8 @@ Aliases provide additional configuration when running a REPL, an application or 
 * `repl/rebel` - run a Clojure REPL
 * `repl/rebel-cljs` - run the default ClojureScript REPL
 * `repl/rebel-nrepl` - run rebel REPL with nrepl connection for editor connections (eg. CIDER, Calva)
+* `repl/reveal-nrepl` - run terminal UI REPL, Reveal data visualization, with nrepl connection for editor connections (eg. CIDER, Calva, Conjure)
+* `repl/reveal-light-nrepl` - as above with light theme
 * `:env/dev` include `dev/` in classpath to [configure REPL startup actions using `dev/user.clj`](http://practicalli.github.io/clojure/clojure-tools/configure-repl-startup.html)
 
 | Command                            | Description                                                                                                    |
@@ -132,6 +134,9 @@ Aliases provide additional configuration when running a REPL, an application or 
 | `clojure -M:env/dev:repl/rebel`    | Run a Clojure REPL using Rebel Readline, including deps and path from `:env/dev` alias to configure REPL start |
 | `clojure -M:repl/rebel-cljs`       | Run a ClojureScript REPL using Rebel Readline                                                                  |
 | `clojure -M:alias:repl/rebel-cljs` | Run a ClojureScript REPL using Rebel Readline, including deps and path from alias                              |
+| `clj -M:repl/reveal-nrepl`         | Run a Clojure REPL with Reveal data visualization and nREPL interactively                                     |
+| `clj -M:repl/reveal-light-nrepl`   | Run a Clojure REPL with Reveal data visualization (light theme) and nREPL interactively                        |
+
 
 `:repl/help` in the REPL for help and available commands.  `:repl/quit` to close the REPL.
 
