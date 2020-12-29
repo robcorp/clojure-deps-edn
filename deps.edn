@@ -64,12 +64,12 @@
 
   ;; clojure -M:repl/rebel-nrepl
   :repl/rebel-nrepl
-  {:extra-deps {nrepl/nrepl                {:mvn/version "0.8.3"}
-                cider/cider-nrepl          {:mvn/version "0.25.5"}
+  {:extra-deps {nrepl/nrepl                   {:mvn/version "0.8.3"}
+                cider/cider-nrepl             {:mvn/version "0.25.5"}
                 refactor-nrepl/refactor-nrepl {:mvn/version "2.5.0"}
-                com.bhauman/rebel-readline {:mvn/version "0.1.4"}}
+                com.bhauman/rebel-readline    {:mvn/version "0.1.4"}}
    :main-opts  ["-m" "nrepl.cmdline"
-                "--middleware" "[cider.nrepl/cider-middleware]"
+                "--middleware" "[cider.nrepl/cider-middleware,refactor-nrepl.middleware/wrap-refactor]"
                 "-i"
                 "-f" "rebel-readline.main/-main"]}
 
@@ -78,17 +78,19 @@
   ;; - see :inspect/reveal* for more reveal aliases
   ;; clj -M:repl/reveal-nrepl
   :repl/reveal-nrepl
-  {:extra-deps {vlaaad/reveal {:mvn/version "1.1.171"}
-                nrepl/nrepl   {:mvn/version "0.8.3"}}
+  {:extra-deps {vlaaad/reveal                 {:mvn/version "1.2.180"}
+                nrepl/nrepl                   {:mvn/version "0.8.3"}
+                cider/cider-nrepl             {:mvn/version "0.25.5"}
+                refactor-nrepl/refactor-nrepl {:mvn/version "2.5.0"}}
    :main-opts  ["-m" "nrepl.cmdline"
-                "--middleware" "[vlaaad.reveal.nrepl/middleware]"
+                "--middleware" "[refactor-nrepl.middleware/wrap-refactor,vlaaad.reveal.nrepl/middleware,cider.nrepl/cider-middleware]"
                 "-i"]}
 
   ;; As with :repl/reveal-nrepl with a light theme and 32 point font
   ;; Replace font-family with local font (should be slightly faster startup)
   ;; clj -M:repl/reveal-light-nrepl
   :repl/reveal-light-nrepl
-  {:extra-deps {vlaaad/reveal {:mvn/version "1.1.171"}
+  {:extra-deps {vlaaad/reveal {:mvn/version "1.2.180"}
                 nrepl/nrepl   {:mvn/version "0.8.3"}}
    :jvm-opts   ["-Dvlaaad.reveal.prefs={:theme,:light,:font-family,\"https://ff.static.1001fonts.net/u/b/ubuntu.mono.ttf\",:font-size,32}"]
    :main-opts  ["-m" "nrepl.cmdline"
